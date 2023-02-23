@@ -57,7 +57,9 @@ M.show_changes = function(opts)
 end
 
 M.setup = function(opts)
-  vim.api.nvim_create_user_command('Gerrit', M.show_changes, {})
+  vim.api.nvim_create_user_command('Gerrit', function()
+    M.show_changes(opts)
+  end, {})
 end
 
 return M
